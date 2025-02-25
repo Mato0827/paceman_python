@@ -1,6 +1,6 @@
 import pygame
 import sys
-from load_img import img_road, img_wall, img_scope, img_player, img_enemy, img_goal, img_coin, img_item, img_arrow
+from road_image import img_road, img_wall, img_scope, img_player, img_enemy, img_goal, img_coin, img_item, img_arrow
 
 def test_images_one_by_one():
     pygame.init()
