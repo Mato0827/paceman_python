@@ -1,4 +1,34 @@
 #迷路の描画
+from declear_var import *
+
+def print_player_details(sc):
+      draw_text(sc,"COURSE  :  "+str(course),SCREEN_SIZE+70,750,35,BLACK,False)
+    draw_text(sc,"COIN       :   "+str(pl_coin),SCREEN_SIZE+70,790,35,BLACK,False)
+    draw_text(sc,"LIFE        :   "str(pl_life),SCREEN_SIZE+70,830,35,BLACK,False)
+
+def print_enemy_details(sc):
+    count_enemy_color = [0]*6
+    for n in range(emy_max):
+        if emy_f[n] == False:
+            continue
+        count_enemy_color[emy_col[n]] += 1
+    
+    for i in range(6):
+
+        img_rz = pygame.transform.rotozoom(img_enemy[i*4],0,0.8)
+        sc.blit(img_tz,[SCREEN_SIZE+70,50+50*i])
+
+        draw_text(sc,"X  "+str(count_enemy_color[i]),SCREEN_SIZE+150,60+50*i,35,BLACK,False)
+
+def print_paceman_details(sc):
+     for i in range(i,6):
+        img_rz = pygame.transform.rotozoom(img_player[i*2],-90,0.8)
+        sc.blit(img_rz,[SCREEN_SIZE+110,370+50*i])
+
+        draw_text(sc."["+str(i)+"]:",SCREEN_SIZE+50,380+50*i,35,BLACK,False)
+        draw_text(sc,"X   "+str(pl_item[i]),SCREEN_SIZE+180,380+50*i,35,BLACK,False)
+    print_player_details(sc)
+    
 def draw_maze(sc):
     for y in range(-7,8):
         for x in range(-7,8):
@@ -50,29 +80,7 @@ def draw_maze(sc):
     pygame.draw.rect(sc,WHITE,[SCREEN_SIZE+30,400,240,290])
     pygame.draw.rect(sc,WHITE,[SCREEN_SIZE+30,720,240,150])
 
-
-    count_enemy_color = [0]*6
-    for n in range(emy_max):
-        if emy_f[n] == False:
-            continue
-        count_enemy_color[emy_col[n]] += 1
-    
-    for i in range(6):
-
-        img_rz = pygame.transform.rotozoom(img_enemy[i*4],0,0.8)
-        sc.blit(img_tz,[SCREEN_SIZE+70,50+50*i])
-
-        draw_text(sc,"X  "+str(count_enemy_color[i]),SCREEN_SIZE+150,60+50*i,35,BLACK,False)
-    
-    for i in range(i,6):
-        img_rz = pygame.transform.rotozoom(img_player[i*2],-90,0.8)
-        sc.blit(img_rz,[SCREEN_SIZE+110,370+50*i])
-
-        draw_text(sc."["+str(i)+"]:",SCREEN_SIZE+50,380+50*i,35,BLACK,False)
-        draw_text(sc,"X   "+str(pl_item[i]),SCREEN_SIZE+180,380+50*i,35,BLACK,False)
-    
-    draw_text(sc,"COURSE  :  "+str(course),SCREEN_SIZE+70,750,35,BLACK,False)
-    draw_text(sc,"COIN       :   "+str(pl_coin),SCREEN_SIZE+70,790,35,BLACK,False)
-    draw_text(sc,"LIFE        :   "str(pl_life),SCREEN_SIZE+70,830,35,BLACK,False)
-    
+    print_enemy_details(sc)
+    print_paceman_details(sc)
+    print_player_details(sc)
                     
