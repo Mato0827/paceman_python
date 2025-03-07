@@ -1,20 +1,23 @@
 import pygame
 import sys
-from text_drawer import ../draw_text
+from draw_text import draw_img
 
-def test_draw_text():
+def test_draw_img():
     pygame.init()
     
-    screen_width, screen_height = 640, 480
+    screen_width, screen_height = 640, 640
     screen = pygame.display.set_mode((screen_width, screen_height))
-    pygame.display.set_caption("draw_text テスト")
+    pygame.display.set_caption("draw_img テスト")
     
     screen.fill((255, 255, 255))
     
-    draw_text(screen, "Centered Text", screen_width, screen_height, 50, (0, 0, 0), True)
-    
-    draw_text(screen, "Non-Centered Text", 10, 10, 30, (255, 0, 0), False)
-    
+    try:
+        img = pygame.image.load("./image/enemy_0.png") 
+    except Exception as e: 
+         print("画像の読み込みに失敗しました:", e)
+         pygame.quit() 
+         sys.exit()
+    draw_img(screen,img,screen_width/2,screen_height/2)
     pygame.display.flip()
     
     running = True
@@ -27,5 +30,4 @@ def test_draw_text():
     sys.exit()
 
 if __name__ == '__main__':
-    test_draw_text()
-
+    test_draw_img()
