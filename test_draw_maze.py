@@ -2,7 +2,7 @@ import pygame
 import sys
 from collections import deque
 from declear_var import *  
-from draw_maze import *
+from draw_maze import draw_maze
 
 def create_dummy_surface(color, size=(maze_size, maze_size)):
     surf = pygame.Surface(size)
