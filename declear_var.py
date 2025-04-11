@@ -31,7 +31,7 @@ COLOR_YELLOW = 3
 COLOR_GREEN = 4
 COLOR_BROWN = 5
 #GAME MANAGE
-ids = 0
+idx = 0
 tmr = 0
 course = 0
 WALL = 0

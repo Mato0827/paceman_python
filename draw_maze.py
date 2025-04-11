@@ -1,10 +1,10 @@
 #迷路の描画
-from declear_var import *
+import declear_var
 
 def print_player_details(sc):
-    draw_text(sc,"COURSE  :  "+str(course),SCREEN_SIZE+70,750,35,BLACK,False)
-    draw_text(sc,"COIN       :   "+str(pl_coin),SCREEN_SIZE+70,790,35,BLACK,False)
-    draw_text(sc,"LIFE        :   "+str(pl_life),SCREEN_SIZE+70,830,35,BLACK,False)
+    draw_text(sc,"COURSE  :  "+str(course),declear_var.SCREEN_SIZE+70,750,35,declear_var.BLACK,False)
+    draw_text(sc,"COIN       :   "+str(pl_coin),declear_var.SCREEN_SIZE+70,790,35,declear_var.BLACK,False)
+    draw_text(sc,"LIFE        :   "+str(pl_life),declear_var.SCREEN_SIZE+70,830,35,BLACK,False)
 
 def print_enemy_details(sc):
     count_enemy_color = [0]*6
@@ -16,40 +16,40 @@ def print_enemy_details(sc):
     for i in range(6):
 
         img_rz = pygame.transform.rotozoom(img_enemy[i*4],0,0.8)
-        sc.blit(img_tz,[SCREEN_SIZE+70,50+50*i])
+        sc.blit(img_tz,[declear_var.SCREEN_SIZE+70,50+50*i])
 
-        draw_text(sc,"X  "+str(count_enemy_color[i]),SCREEN_SIZE+150,60+50*i,35,BLACK,False)
+        draw_text(sc,"X  "+str(count_enemy_color[i]),declear_var.SCREEN_SIZE+150,60+50*i,35,BLACK,False)
 
 def print_paceman_details(sc):
     for i in range(i,6):
         img_rz = pygame.transform.rotozoom(img_player[i*2],-90,0.8)
-        sc.blit(img_rz,[SCREEN_SIZE+110,370+50*i])
+        sc.blit(img_rz,[declear_var.SCREEN_SIZE+110,370+50*i])
 
-        draw_text(sc,"["+str(i)+"]:",SCREEN_SIZE+50,380+50*i,35,BLACK,False)
-        draw_text(sc,"X   "+str(pl_item[i]),SCREEN_SIZE+180,380+50*i,35,BLACK,False)
+        draw_text(sc,"["+str(i)+"]:",declear_var.SCREEN_SIZE+50,380+50*i,35,BLACK,False)
+        draw_text(sc,"X   "+str(pl_item[i]),declear_var.SCREEN_SIZE+180,380+50*i,35,BLACK,False)
     
     
 def draw_maze(sc):
     for y in range(-7,8):
         for x in range(-7,8):
-            X = (x+7) * maze_size
-            Y = (y+7) * maze_size
-            mx = pl_x + x 
-            my = pl_y + y 
+            X = (x+7) * declear_var.maze_size
+            Y = (y+7) * declear_var.maze_size
+            mx = declear_var.pl_x + x 
+            my = declear_var.pl_y + y 
 
-            if 0 <= mx < maze_num and 0 <= my < maze_num:
-                if maze[my][mx] == WALL:
+            if 0 <= mx < declear_var.maze_num and 0 <= my < declear_var.maze_num:
+                if declear_var.maze[my][mx] == WALL:
                     sc.blit(img_wall,[X,Y])
-                if maze[my][mx] == ROAD:
+                if declear_var.maze[my][mx] == ROAD:
                     sc.blit(img_road,[X,Y])
                 
-                if maze[my][mx] == GOAL:
+                if declear_var.maze[my][mx] == GOAL:
                     sc.blit(img_goal,[X,Y])
                 
-                if maze[my][mx] == COIN:
+                if declear_var.maze[my][mx] == COIN:
                     sc.blit(img_coin,[X,Y])
                 
-                if maze[my][mx] == ITEM:
+                if declear_var.maze[my][mx] == ITEM:
                     sc.blit(img_item,[X,Y])
                 
                 for n in range(emy_max):

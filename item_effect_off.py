@@ -1,3 +1,4 @@
+from declear_var import COLOR_BLACK
 def item_effect_off():
     global pl_col,pl_scope,pl_fast
     global item_use,item_time
@@ -9,4 +10,3 @@ def item_effect_off():
     pl_col = COLOR_BLACK
     pl_fast = False
     pl_scope = 0
-    
