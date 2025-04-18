@@ -6,6 +6,10 @@ from make_maze import make_maze
 from enemy import init_enemy,bring_enemy
 import sys
 import random
+from target import *
+
+GOAL = -2
+
 def init_game():
     global maze_num, course
     global pl_life, pl_item, pl_coin, pl_muteki

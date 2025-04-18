@@ -409,7 +409,6 @@ def bring_enemy():
 
     # 敵の色：ランダム選択
     emy_col = random.randint(COLOR_BLACK, COLOR_BROWN)
-
     # 敵の移動スピード(敵の色で判別)
     if emy_col == COLOR_BLACK:      # 黒
         emy_s = ENEMY_HIGH_SPEED
@@ -425,7 +424,12 @@ def bring_enemy():
 # ******************** 敵をセット ********************
 def set_enemy(x, y, s, col):
     global emy_no
-
+    print("set_enemy3")
+    print(emy_no)
+    print(emy_x)
+    print(emy_y)
+    print(emy_s)
+    sys.exit()
     while True:
         if emy_f[emy_no] == False:
             emy_f[emy_no] = True
