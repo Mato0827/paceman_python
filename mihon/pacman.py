@@ -231,8 +231,11 @@ def draw_maze(sc):
     for n in range(emy_max):
         if emy_f[n] == False:
             continue
+        print(emy_col)
         # 色別にカウント
         count_enemy_color[emy_col[n]] += 1
+    
+    sys.exit()
 
     # 敵の情報
     for i in range(6):
@@ -424,12 +427,7 @@ def bring_enemy():
 # ******************** 敵をセット ********************
 def set_enemy(x, y, s, col):
     global emy_no
-    print("set_enemy3")
-    print(emy_no)
-    print(emy_x)
-    print(emy_y)
-    print(emy_s)
-    sys.exit()
+
     while True:
         if emy_f[emy_no] == False:
             emy_f[emy_no] = True

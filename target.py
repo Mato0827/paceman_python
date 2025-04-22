@@ -28,12 +28,14 @@ def set_target(target):
     x = 0
     y = 0
 
+
     dis = declear_var.maze_num // 4
 
     while True:
         x = random.randint(1,declear_var.maze_num-2)
-        y - random.randint(1, declear_var.maze_num-2)
+        y = random.randint(1, declear_var.maze_num-2)
 
         if declear_var.maze[y][x] == declear_var.ROAD or declear_var.maze[y][x] == declear_var.COIN:
             declear_var.maze[y][x] = target
             break
+    print("finish_in_set_target")
