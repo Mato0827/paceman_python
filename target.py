@@ -6,7 +6,7 @@ def search_target(target):
 
     for y in range(declear_var.maze_num):
         for x in range(declear_var.maze_num):
-            if maze[y][x] == target:
+            if declear_var.maze[y][x] == target:
                 result = True
     
     return result
@@ -38,4 +38,4 @@ def set_target(target):
         if declear_var.maze[y][x] == declear_var.ROAD or declear_var.maze[y][x] == declear_var.COIN:
             declear_var.maze[y][x] = target
             break
-    print("finish_in_set_target")
+    

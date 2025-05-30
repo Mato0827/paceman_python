@@ -33,4 +33,4 @@ def make_maze():
             d = random.randint(0,3)
             if x > 2:
                 d = random.randint(0,2)
-        declear_var.maze[y+YP[d]][x+XP[d]] = declear_var.WALL
+            declear_var.maze[y+YP[d]][x+XP[d]] = declear_var.WALL

@@ -3,14 +3,16 @@ from draw_text import draw_text
 import declear_var
 from item_effect_off import item_effect_off
 from make_maze import make_maze
-from enemy import init_enemy,bring_enemy
+from enemy import *
 import sys
 import random
 from target import *
 from draw_maze import draw_maze
+from move_player import move_player
+from hit_check import hit_check
+from item import *
 
-ITEM = -3
-GOAL = -2
+
 
 def init_game():
 
@@ -31,7 +33,7 @@ def init_game_place():
     declear_var.emy_num_max = False
     declear_var.emy_time = declear_var.FPS * 20
     init_enemy()
-    print("finish_init_enemy")
+    
 
     declear_var.item_max = declear_var.maze_num // 5
     declear_var.item_generate_time = declear_var.FPS * 60
@@ -41,22 +43,22 @@ def init_game_place():
         declear_var.pl_y = random.randint(1,declear_var.maze_num-2)
         if declear_var.maze[declear_var.pl_y][declear_var.pl_x] == declear_var.ROAD:
             break
-    print("finish_while")
+    
     for i in range(declear_var.maze_num // 10):
         bring_enemy()
-    print("finish_bring_enemy")
-    set_target(GOAL)
+    
+    set_target(declear_var.GOAL)
     goal_f = True
 
     for n in range(declear_var.maze_num // 10):
-        set_target(ITEM)
-    print("finish_set_target")
+        set_target(declear_var.ITEM)
+    
     
     for y in range(declear_var.maze_num):
         for x in range(declear_var.maze_num):
             if declear_var.maze[y][x] == declear_var.ROAD:
                 declear_var.maze[y][x] = declear_var.COIN
-    print("init_game_place_last")
+    
 def init_sound():
     snd_pacman_blue = pygame.mixer.Sound("sound/pacman_blue.mp3")
     snd_pacman_red = pygame.mixer.Sound("sound/pacman_red.mp3")
@@ -77,7 +79,7 @@ def main():
     global snd_arrive_goal, snd_get_coin, snd_get_item
     global pl_col, pl_muteki
     global item_use, item_time
-
+    snd_arrive_goal = pygame.mixer.Sound("sound/arrive_goal.mp3")
     pygame.init()
     pygame.display.set_caption("PAC-MAN")
     
@@ -120,7 +122,7 @@ def main():
                 declear_var.course += 1
                 make_maze()
                 init_game_place()
-                print("finish init_game_place")
+                
             
             else:
                 move_player(key)
@@ -132,20 +134,20 @@ def main():
                 check_goal_to_generate()
                 check_item_to_generate()
 
-                if item_use == True:
-                    item_time -= 1
+                if declear_var.item_use == True:
+                    declear_var.item_time -= 1
 
-                    if item_time == 0:
+                    if declear_var.item_time == 0:
                         item_effect_off()
                 
-                if pl_muteki > 0:
-                    pl_muteki -= 1
+                if declear_var.pl_muteki > 0:
+                    declear_var.pl_muteki -= 1
                 
-                if pl_life <= 0:
+                if declear_var.pl_life <= 0:
                     declear_var.idx = 2
                     declear_var.tmr = 0
                 
-                if declear_var.maze[declear_var.pl_y][declear_var.pl_x] == GOAL:
+                if declear_var.maze[declear_var.pl_y][declear_var.pl_x] == declear_var.GOAL:
                     snd_arrive_goal.play()
                     declear_var.tmr = 0
         
@@ -157,9 +159,9 @@ def main():
         
         
         if declear_var.idx == 1 and declear_var.tmr > 0:
-            print("draw_maze")
+            
             draw_maze(screen)
-            print("draw_maze")
+            
         
         pygame.display.update()
         clock.tick(declear_var.FPS)

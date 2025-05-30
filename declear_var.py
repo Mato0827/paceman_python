@@ -78,3 +78,5 @@ maze = []
 #BFS
 q = deque()
 dist = []
+#key
+key = 0

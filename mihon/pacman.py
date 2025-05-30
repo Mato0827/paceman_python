@@ -235,7 +235,7 @@ def draw_maze(sc):
         # 色別にカウント
         count_enemy_color[emy_col[n]] += 1
     
-    sys.exit()
+
 
     # 敵の情報
     for i in range(6):
