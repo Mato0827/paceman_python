@@ -27,6 +27,10 @@ def make_maze():
         for x in range(1,declear_var.maze_num-1):
             declear_var.maze[y][x] = declear_var.ROAD
     
+    for y in range(2,declear_var.maze_num-2,2):
+        for x in range(2,declear_var.maze_num-2,2):
+            declear_var.maze[y][x] = declear_var.WALL
+    
 
     for y in range(2,declear_var.maze_num-2,2):
         for x in range(2,declear_var.maze_num-2,2):

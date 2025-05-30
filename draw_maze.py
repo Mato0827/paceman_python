@@ -3,12 +3,8 @@ import declear_var
 import road_image as ri
 import pygame
 from draw_text import draw_img,draw_text
+from calc import *
 
-COIN = -4
-WALL = 0
-GOAL = -2
-ROAD = -1
-ITEM = -3
 
 def print_player_details(sc):
     draw_text(sc,"COURSE  :  "+str(declear_var.course),declear_var.SCREEN_SIZE+70,750,35,declear_var.BLACK,False)
@@ -48,18 +44,18 @@ def draw_maze(sc):
             my = declear_var.pl_y + y 
 
             if 0 <= mx < declear_var.maze_num and 0 <= my < declear_var.maze_num:
-                if declear_var.maze[my][mx] == WALL:
+                if declear_var.maze[my][mx] == declear_var.WALL:
                     sc.blit(ri.img_wall,[X,Y])
-                if declear_var.maze[my][mx] == ROAD:
+                if declear_var.maze[my][mx] == declear_var.ROAD:
                     sc.blit(ri.img_road,[X,Y])
                 
-                if declear_var.maze[my][mx] == GOAL:
+                if declear_var.maze[my][mx] == declear_var.GOAL:
                     sc.blit(ri.img_goal,[X,Y])
                 
-                if declear_var.maze[my][mx] == COIN:
+                if declear_var.maze[my][mx] == declear_var.COIN:
                     sc.blit(ri.img_coin,[X,Y])
                 
-                if declear_var.maze[my][mx] == ITEM:
+                if declear_var.maze[my][mx] == declear_var.ITEM:
                     sc.blit(ri.img_item,[X,Y])
                 
                 for n in range(declear_var.emy_max):
@@ -77,12 +73,12 @@ def draw_maze(sc):
                     else:
                         sc.blit(ri.img_rz,[X,Y])
                 
-                if declear_var.pl_col == declear_var.COLOR_GREEN and goal_f == True:
+                if declear_var.pl_col == declear_var.COLOR_GREEN and declear_var.goal_f == True:
 
                     a = calc_angle_of_goal_from_player()
 
                     ri.img_rz = pygame.transform.rotozoom(ri.img_arrow,-a,1.0)
-                    draw_img(sc,img_rz,X+maze_size/2,Y-maze_size)
+                    draw_img(sc,ri.img_rz,X+declear_var.maze_size/2,Y-declear_var.maze_size)
 
     draw_img(sc,ri.img_scope[declear_var.pl_scope],declear_var.SCREEN_SIZE/2,declear_var.SCREEN_SIZE/2)
 

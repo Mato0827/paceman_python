@@ -139,6 +139,7 @@ def main():
 
                     if declear_var.item_time == 0:
                         item_effect_off()
+                        print("item_effect_off")
                 
                 if declear_var.pl_muteki > 0:
                     declear_var.pl_muteki -= 1
@@ -165,6 +166,7 @@ def main():
         
         pygame.display.update()
         clock.tick(declear_var.FPS)
+        print(declear_var.tmr)
 
 if __name__ == '__main__':
     main()

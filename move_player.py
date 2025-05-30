@@ -4,6 +4,8 @@ import pygame
 
 #エラー処理必要
 #壁に当たった時の処理
+pygame.init()
+snd_break_wall = pygame.mixer.Sound("sound/break_wall.mp3")
 
 def move_player_up(key):
     if key[pygame.K_UP] == True:

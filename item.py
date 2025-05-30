@@ -38,6 +38,14 @@ def use_item(key):
         dv.item_use = True
         dv.item_time = dv.FPS * 13
     
+    if key[pygame.K_4] == True and dv.pl_item[dv.COLOR_GREEN] > 0:
+        snd_pacman_green.play()
+        item_effect_off()
+        dv.pl_item[dv.COLOR_GREEN] -= 1
+        dv.pl_col = dv.COLOR_GREEN
+        dv.item_use = True
+        dv.item_time = dv.FPS * 23
+    
     if key[pygame.K_5] == True and dv.pl_item[dv.COLOR_BROWN] > 0:
         snd_pacman_brown.play()
         item_effect_off()
@@ -60,7 +68,7 @@ def check_item_to_generate():
     
     elif count_item < dv.item_max and dv.item_generate_time == 0:
         set_target(dv.ITEM)
-        dv.item_generate_time = FPS * 15
+        dv.item_generate_time = dv.FPS * 15
 
 def check_goal_to_generate():
 
