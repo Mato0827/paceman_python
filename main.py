@@ -48,7 +48,7 @@ def init_game_place():
         bring_enemy()
     
     set_target(declear_var.GOAL)
-    goal_f = True
+    declear_var.goal_f = True
 
     for n in range(declear_var.maze_num // 10):
         set_target(declear_var.ITEM)
